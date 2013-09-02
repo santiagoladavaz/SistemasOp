@@ -15,7 +15,7 @@ class thread(threading.Thread):
     def run(self):
         self.lista.pop(0)
         for p in range(len(self.lista)):
-            print("Soy el thread numero "+str(self.num)+ " e imprimo el elemento num: "+ str(p))
+            print("Soy el thread numero "+str(self.num)+ " e imprimo el elemento num: "+ str(p));
             
            
            
