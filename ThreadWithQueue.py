@@ -17,32 +17,37 @@ class threadW(threading.Thread):
         
     
     def run(self):
-        while(True):
-            self.queue.put(self.num)
+        self.queue.put(self.num)
         
        
        
        
   
 class threadR(threading.Thread): 
+    
     def __init__(self,unNum,unaQueue):
         threading.Thread.__init__(self)
         self.num=unNum
         self.queue=unaQueue
     
     def run(self):
-        while(True):
-            print("Thread numero "+str(self.queue.get()))
+        print("Thread numero "+str(self.queue.get_nowait()))
 
 
 
 if __name__ == "__main__":
     queue=Queue()
-    t1=threadW("1",queue)
-    t2=threadR("2",queue)
-    t3=threadW("3",queue)
+    t2=threadW("7",queue)
+    t1=threadW("10",queue)
+    t6=threadW("9",queue)
+    t7=threadR("7",queue)
+    t3=threadW("5",queue)
     t4=threadR("4",queue)
+    t5=threadR("7",queue)
     t1.start()
     t2.start()
     t3.start()
     t4.start() 
+    t5.start()
+    t6.start()
+    t7.start()

@@ -1,15 +1,13 @@
 '''
 Created on 09/09/2013
 
-@author: Publico
+@author: Santi
 '''
 
 
-from time import sleep
-import threading
-n_sem = 1
-semaforo = threading.Semaphore(n_sem)
 
+import threading
+semaforo = threading.Semaphore(1)
 
 class thread(threading.Thread):
     
@@ -19,11 +17,11 @@ class thread(threading.Thread):
         self.lista=unaLista
         
     def run(self):
-        semaforo.acquire()
-        self.lista.pop(0)
-        for p in range(len(self.lista)):
-            print("Soy el thread numero "+str(self.num)+ " e imprimo el elemento num: "+ str(p));
-        semaforo.release()
+            semaforo.acquire()
+            #self.lista.pop(0)
+            for p in range(len(self.lista)):
+                print("Soy el thread numero "+str(self.num)+ " e imprimo el elemento num: "+ str(p));
+            semaforo.release()
         
 
 
